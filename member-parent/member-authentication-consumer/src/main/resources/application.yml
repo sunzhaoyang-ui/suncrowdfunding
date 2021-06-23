@@ -1,0 +1,26 @@
+server:
+  port: 4000
+spring:
+  application:
+    name: sun-crowd-auth
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  redis:
+    host: 127.0.0.1
+  session:
+    store-type: redis
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+short:
+  message:
+    host: http://dingxin.market.alicloudapi.com
+    path: /dx/sendSms
+    method: POST
+    appcode: 5eb9ba6167d44a46a43f3255b470cc2f
+    skin: TP1711063
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

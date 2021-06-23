@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 配置SpringMVC -->
+    <!-- 注解驱动 -->
+    <mvc:annotation-driven />
+
+    <!-- 静态资源过滤-->
+    <!--<mvc:default-servlet-handler/>-->
+
+    <!-- 扫描包 controller -->
+    <context:component-scan base-package="com.sun.crowd.mvc" />
+
+    <!-- 视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!--配置基于xml的异常映射-->
+    <bean id="simpleMappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!-- 配置异常类型和具体视图页面对应关系 -->
+        <property name="exceptionMappings">
+            <props>
+                <!-- key属性指定异常全类名，标签体中指定对应的视图(前后缀拼接) -->
+                <prop key="java.lang.Exception">system-error</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <!--配置view-controller，直接把请求地址和视图名称关联起来，从而无需写handler方法-->
+    <mvc:view-controller path="/admin/to/login/page.html" view-name="admin-login"/>
+    <mvc:view-controller path="/admin/to/main/page.html" view-name="admin-main"/>
+    <mvc:view-controller path="/admin/to/add/page.html" view-name="admin-add"/>
+    <mvc:view-controller path="/role/to/page.html" view-name="role-page"/>
+    <mvc:view-controller path="/menu/to/page.html" view-name="menu-page"/>
+
+    <!--注册拦截器：使用SpringSecurity后当前自定义的登录拦截器不再使用了
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/admin/to/login/page.html"/>
+            <mvc:exclude-mapping path="/admin/do/login.html"/>
+            <mvc:exclude-mapping path="/admin/do/logout.html"/>
+            <bean class="com.sun.crowd.mvc.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+</beans>
