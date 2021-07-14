@@ -1,2 +1,2 @@
 # suncrowdfunding
-众筹网
+尚筹网
