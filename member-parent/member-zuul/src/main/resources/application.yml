@@ -22,11 +22,11 @@ zuul:
       service-id: sun-crowd-project
       path: /project/**
     crowd-order:
-          service-id: sun-crowd-order
-          path: /order/**
+      service-id: sun-crowd-order
+      path: /order/**
     crowd-pay:
-              service-id: sun-crowd-pay
-              path: /pay/**
+      service-id: sun-crowd-pay
+      path: /pay/**
 ribbon:
   ReadTimeout: 10000
   ConnectTimeout: 10000

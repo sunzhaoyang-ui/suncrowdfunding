@@ -2,7 +2,6 @@ package com.sun.crowd.mvc.config;
 
 import com.sun.crowd.constant.CrowdConstant;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
